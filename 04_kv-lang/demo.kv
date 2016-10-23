@@ -1,0 +1,21 @@
+FloatLayout:
+    id: layout
+
+    Button:
+        id: open_button
+        text: 'click me!'
+        size_hint: (.5, .5)
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        on_release: root.ids['popup'].open()
+
+    Popup:
+        id: popup
+        title: 'hello, world'
+        auto_dismiss: True
+        size_hint: (.3, .3)
+        on_parent: if self.parent == layout: layout.remove_widget(self)
+
+        Button:
+            id: close_button
+            text: 'close me!'
+            on_release: root.ids['popup'].dismiss()
